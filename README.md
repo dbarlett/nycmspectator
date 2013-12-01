@@ -13,6 +13,7 @@ source bin/activate
 pip install -r requirements.txt
 python wsgi.py
 ````
-Browse to http://localhost:5000/.
+Browse to http://localhost:5000.
 
-Before deploying to your server, follow the instructions on lines 16 and 204 of wsgi.py.
+Before deploying to your server, follow the instructions on lines 16 and 204 of `wsgi.py`.
+If you have a Google Analytics account, set the ID and domain in `templates/layout.html`.
