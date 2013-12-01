@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="/static/favicon.ico" sizes="64x64">
+    <title>2013 NYC Marathon Spectator Guide</title>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="2013 NYC Marathon Spectator Guide"/>
+    <meta property="og:description" content="Plan your spectating at the 2013 ING New York City Marathon"/>
+    <meta property="og:url" content="http://nycmarathon.aws.af.cm/"/>
+    <meta property="og:site_name" content="DC Road Runners Club"/>
+    <link rel="stylesheet" href="/static/bootstrap.css">
+    <script type="text/javascript">
+    var _gas = _gas || [];
+    _gas.push(['_setAccount', 'UA-9223355-1']);
+    _gas.push(['_setDomainName', 'nycmarathon.aws.af.cm']);
+    _gas.push(['_trackPageview']);
+    _gas.push(['_gasTrackOutboundLinks']);
+    _gas.push(['_gasTrackDownloads', {
+        category: 'Download',
+        extensions: ['pdf']
+    }]);
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = '//cdnjs.cloudflare.com/ajax/libs/gas/1.10.1/gas.min.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</head>
+<body>
+<h3 class="noprint">2013 ING New York City Marathon Spectator Guide</h3>
+<p>Reminder: Daylight Savings Time ends at 2:00 AM on race day (set clocks back one hour).</p>
+{% for error in form.errors.hours %}
+<span style="color: red;">{{error}}</span>
+{% endfor %}
+{% for error in form.errors.minutes %}
+<span style="color: red;">{{error}}</span>
+{% endfor %}
+
+<form class="noprint" name="{{ form.__name__ }}" method="POST" action="">
+{{ form.wave.label }} {{ form.wave }}
+Goal time:
+{{ form.hours(size=1) }} {{ form.hours.label }}
+{{ form.minutes(size=1) }} {{ form.minutes.label }} 
+{{ form.hidden_tag() }}
+<input type="submit" value="Submit">
+</form>
+
+<p class="noprint">
+    <a href="http://www.ingnycmarathon.org/images/pdf/INGNYCM13_Course_Map_ForWeb.pdf">Course map</a> (PDF) | 
+    <a href="http://www.ingnycmarathon.org/images/start-timeline.pdf">Start timeline</a> (PDF) |
+    <a href="http://tripplanner.mta.info/MyTrip/ui_web/customplanner/tripplanner.aspx">MTA Trip Planner</a>
+</p>
+
+{% if start_time is defined %}
+<h4>Timeline</h4>
+{% endif %}
+<ul>
+{% if start_time is defined %}
+<li>Start time: {{ start_time }}</li>
+{% endif %}
+
+{% if goal_finish is defined %}
+<li>Goal finish: {{ goal_finish }} {% if goal_pace is defined %}({{ goal_pace }}/mile){% endif %}</li>
+{% endif %}
+
+{% if beer_time is defined %}
+<li>Exit finish area / ready for a beer: {{ beer_time }}</li>
+{% endif %}
+</ul>
+
+{% if friend_link is defined %}
+<p class="noprint">Bookmark this link or send it to your friends: <a href="{{ friend_link }}">{{ friend_link }}</a></p>
+{% endif %}
+
+<p>
+{% block detaillists %}
+{% if viewing_points is defined %}
+    {% for point, details in viewing_points.items() %}               
+        <h4>Viewing Point {{ point }} (Mile {{ details.Mile }}, ETA {{ details["ETA"] }})</h4>
+        <ul>
+        {% for field in ["Location", "Getting there", "Leaving", "Notes"] %}
+            <li>{{ field }}: {{ details[field]|safe }}</li>
+        {% endfor %}
+        </ul>
+        <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?dg=opt&amp;ie=UTF8&amp;t=m&amp;q=http%3A%2F%2Fnycmarathon.aws.af.cm%2Fstatic%2Fnycm_course.kml&amp;ll={{ details["Coordinates"][1] }},{{ details["Coordinates"][0] }}&amp;spn=0.010837,0.014935&amp;z=15&amp;output=embed"></iframe>
+        <br />
+        <small class="noprint"><a href="https://www.google.com/maps?dg=opt&amp;ie=UTF8&amp;t=m&amp;q=http%3A%2F%2Fnycmarathon.aws.af.cm%2Fstatic%2Fnycm_course.kml&amp;ll={{ details["Coordinates"][1] }},{{ details["Coordinates"][0] }}&amp;spn=0.010837,0.014935&amp;z=15&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+    {% endfor %}
+{% endif %}
+{% endblock %}
+</p>
+<footer>
+    <p>Brought to you by the <a href="http://www.dcroadrunners.org">DC Road Runners Club</a>.</p>
+    <a href="http://www.dcroadrunners.org">
+        <img class="noprint" src="/static/DCRRlogotype.png" width="302" height="118">
+    </a>
+</footer>
+</body>
+</html>
