@@ -17,15 +17,15 @@ SECRET_KEY = "CHANGE_ME"  # Set a random value for production use
 
 RACE_DIST = 26.2  # miles
 
-# 2013 wave start times as of 2013-10-15
+# 2014 wave start times as of 2014-10-15
 wave_starts = OrderedDict()
-wave_starts["Wheelchair"] = datetime.datetime(2013, 10, 3, 8, 30, 0)
-wave_starts["Handcycle/Ambulatory"] = datetime.datetime(2013, 10, 3, 8, 55, 0)
-wave_starts["Pro Women"] = datetime.datetime(2013, 10, 3, 9, 10, 0)
-wave_starts["Pro Men/Wave 1"] = datetime.datetime(2013, 10, 3, 9, 40, 0)
-wave_starts["Wave 2"] = datetime.datetime(2013, 10, 3, 10, 5, 0)
-wave_starts["Wave 3"] = datetime.datetime(2013, 10, 3, 10, 30, 0)
-wave_starts["Wave 4"] = datetime.datetime(2013, 10, 3, 10, 55, 0)
+wave_starts["Wheelchair"] = datetime.datetime(2014, 11, 2, 8, 30, 0)
+wave_starts["Handcycle/Ambulatory"] = datetime.datetime(2014, 11, 2, 8, 55, 0)
+wave_starts["Pro Women"] = datetime.datetime(2014, 11, 2, 9, 10, 0)
+wave_starts["Pro Men/Wave 1"] = datetime.datetime(2014, 11, 2, 9, 40, 0)
+wave_starts["Wave 2"] = datetime.datetime(2014, 11, 2, 10, 5, 0)
+wave_starts["Wave 3"] = datetime.datetime(2014, 11, 2, 10, 30, 0)
+wave_starts["Wave 4"] = datetime.datetime(2014, 11, 2, 10, 55, 0)
 
 # Coordinates are lon, lat for KML compatibility
 viewing_points = {

@@ -1,5 +1,5 @@
-#2013 ING New York City Marathon Spectator Guide
-Copyright 2013 [Dylan Barlett](http://www.dylanbarlett.com) and Brian Danza.
+#2014 TCS New York City Marathon Spectator Guide
+Copyright 2014 [Dylan Barlett](http://www.dylanbarlett.com) and Brian Danza.
 
 Sample deployment: http://nycmarathon.aws.af.cm/
 
